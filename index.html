@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Apartmani Anastasija Bečići | Smeštaj 300 m od plaže, Budva</title>
+<meta name="description" content="Apartmani i studiji u Bečićima, 300 m od plaže. Terase sa pogledom na more, klima, Wi‑Fi, besplatan parking. Google ocena 4.8. Rezervacija preko WhatsApp-a.">
+<meta name="keywords" content="apartmani Bečići, smeštaj Budva, apartmani Anastasija, Bečići plaža, studio Budva, privatni smeštaj Crna Gora">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#1b1d16">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Apartmani Anastasija · Bečići, Budva">
+<meta property="og:description" content="Porodična kuća sa 12 apartmana i studija, 300 m od plaže Bečići. Terase sa pogledom na more.">
+<meta property="og:image" content="img/anastasija_07.jpg">
+<meta property="og:locale" content="sr_RS">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23b8395f'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' fill='%23fff' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+<link rel="preload" as="image" href="img/anastasija_43.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LodgingBusiness","name":"Apartmani Anastasija","description":"Apartmani i studiji u Bečićima, 300 m od plaže.","image":"img/anastasija_07.jpg","telephone":"+381631101321","address":{"@type":"PostalAddress","streetAddress":"Sremskog fronta 1","addressLocality":"Bečići","addressRegion":"Budva","postalCode":"85316","addressCountry":"ME"},"geo":{"@type":"GeoCoordinates","latitude":42.2835925,"longitude":18.8656441},"hasMap":"https://www.google.com/maps/place/Apartments+Anastasija/@42.2835925,18.8656441,17z","amenityFeature":[{"@type":"LocationFeatureSpecification","name":"Besplatan Wi-Fi","value":true},{"@type":"LocationFeatureSpecification","name":"Besplatan parking","value":true},{"@type":"LocationFeatureSpecification","name":"Klima uređaj","value":true}],"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"94","bestRating":"5"},"knowsLanguage":["sr","ru","en"]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:auto}
+body{margin:0;background:#f6f2ea;color:#23261d;font-family:Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#b8395f;text-decoration:none}
+a:hover{color:#8f2a49}
+*{box-sizing:border-box}
+::selection{background:#b8395f;color:#fff}
+input,textarea,select,button{font-family:inherit}
+</style>
+</helmet>
+<div ref="{{ rootRef }}" style="min-height:100vh;background:#f6f2ea">
+
+<nav ref="{{ navRef }}" style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:22px clamp(20px,4vw,56px);transition:background .4s, padding .4s">
+  <a href="#pocetna" style="display:flex;flex-direction:column;line-height:1;color:#fff">
+    <span style="font-family:'DM Serif Display',serif;font-size:26px;letter-spacing:.01em">Anastasija</span>
+    <span style="font-size:10px;letter-spacing:.32em;text-transform:uppercase;margin-top:6px;opacity:.8">Apartmani · Bečići</span>
+  </a>
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <button onClick="{{ toggleMenu }}" aria-label="Meni" style="position:relative;z-index:61;width:48px;height:48px;border-radius:50%;border:1.5px solid rgba(255,255,255,.6);background:rgba(20,22,16,.25);color:#fff;font-size:13px;font-weight:700;letter-spacing:.08em;cursor:pointer">{{ menuIcon }}</button>
+  </sc-if>
+  <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+  <div style="display:flex;align-items:center;gap:clamp(14px,2.2vw,32px);overflow-x:auto;scrollbar-width:none">
+    <sc-for list="{{ nav }}" as="n" hint-placeholder-count="6">
+      <a href="{{ n.href }}" style="color:#fff;font-size:13px;font-weight:600;letter-spacing:.06em;white-space:nowrap;padding:6px 0;border-bottom:1.5px solid {{ n.line }};opacity:{{ n.op }};transition:opacity .2s" style-hover="opacity:1;color:#fff">{{ n.label }}</a>
+    </sc-for>
+    <a href="{{ bookingUrl }}" style="background:#b8395f;color:#fff;font-size:13px;font-weight:700;letter-spacing:.06em;padding:11px 20px;border-radius:999px;white-space:nowrap" style-hover="background:#fff;color:#b8395f">Rezerviši</a>
+  </div>
+  </sc-if>
+</nav>
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div data-menu="1" style="position:fixed;inset:0;z-index:49;background:#1b1d16;color:#f6f2ea;display:flex;flex-direction:column;justify-content:space-between;padding:110px 24px 36px">
+    <div style="display:flex;flex-direction:column;gap:4px">
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="6">
+        <a data-mi="1" href="{{ n.href }}" onClick="{{ closeMenu }}" style="font-family:'DM Serif Display',serif;font-size:44px;line-height:1.15;color:{{ n.mcolor }};padding:6px 0;border-bottom:1px solid rgba(246,242,234,.1)" style-hover="color:#f4b6c8">{{ n.label }}</a>
+      </sc-for>
+    </div>
+    <div data-mi="1" style="display:flex;flex-direction:column;gap:12px">
+      <a href="https://wa.me/381631101321" target="_blank" style="text-align:center;background:#25a35a;color:#fff;font-weight:700;font-size:16px;padding:16px;border-radius:999px" style-hover="color:#fff">WhatsApp · +381 63 1101321</a>
+      <a href="{{ bookingUrl }}" onClick="{{ closeMenu }}" style="text-align:center;background:#b8395f;color:#fff;font-weight:700;font-size:16px;padding:16px;border-radius:999px" style-hover="color:#fff">Rezerviši</a>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<main data-screen-label="Početna">
+  <section style="position:relative;height:100vh;min-height:640px;overflow:hidden;background:#23261d">
+    <img data-kb="1" src="{{ heroSrc }}" alt="Ulaz u Apartmane Anastasija" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%">
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,22,16,.45) 0%,rgba(20,22,16,.05) 35%,rgba(20,22,16,.65) 100%)"></div>
+    <div style="position:absolute;left:0;right:0;bottom:0;padding:0 clamp(20px,4vw,56px) clamp(40px,7vh,80px);color:#fff;display:flex;flex-wrap:wrap;justify-content:space-between;gap:28px;align-items:flex-end">
+      <div>
+        <div data-reveal="up" data-delay="100" style="font-size:12px;letter-spacing:.32em;text-transform:uppercase;margin-bottom:20px">Bečići · Budva · Crna Gora</div>
+        <h1 data-reveal="up" data-delay="250" style="font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(52px,9vw,140px);line-height:.92;margin:0;letter-spacing:-.01em">Leandar, maslina<br><em style="color:#f4b6c8">i more</em> na 300 m.</h1>
+      </div>
+      <div data-reveal="up" data-delay="500" style="display:flex;flex-direction:column;gap:14px;align-items:flex-start;max-width:300px">
+        <p style="margin:0;font-size:15px;line-height:1.6;text-wrap:pretty">Porodična kuća sa 12 apartmana i studija, mirnim dvorištem i terasama sa pogledom na zaliv.</p>
+        <a href="#smestaj" style="color:#fff;font-weight:700;font-size:14px;border-bottom:1.5px solid #fff;padding-bottom:4px" style-hover="color:#f4b6c8">Pogledaj smeštaj →</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));border-bottom:1px solid #e2dccf">
+    <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+      <div data-reveal="up" data-delay="{{ s.delay }}" style="padding:36px clamp(20px,4vw,56px);border-right:1px solid #e2dccf">
+        <div style="font-family:'DM Serif Display',serif;font-size:48px;line-height:1;color:#23261d">{{ s.v }}</div>
+        <div style="font-size:13px;color:#5d5f52;margin-top:10px;letter-spacing:.02em">{{ s.l }}</div>
+      </div>
+    </sc-for>
+  </section>
+
+  <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:clamp(32px,6vw,96px);padding:clamp(72px,11vw,160px) clamp(20px,4vw,56px);align-items:center;max-width:1440px;margin:0 auto">
+    <div>
+      <div data-reveal="up" style="font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#b8395f;font-weight:700;margin-bottom:24px">Dobrodošli</div>
+      <h2 data-reveal="up" data-delay="100" style="font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(38px,4.6vw,68px);line-height:1.02;margin:0 0 28px;text-wrap:balance">Kuća u kojoj se jutarnja kafa pije pod lozom.</h2>
+      <p data-reveal="up" data-delay="200" style="font-size:17px;line-height:1.75;color:#45483b;margin:0 0 18px;max-width:520px;text-wrap:pretty">Apartmani Anastasija su u ulici Sremskog fronta u Bečićima, nekoliko minuta hoda od peščane plaže. Kuću okružuje kameno dvorište sa starom maslinom, leandrima, fontanom i hladovinom vinove loze.</p>
+      <p data-reveal="up" data-delay="300" style="font-size:17px;line-height:1.75;color:#45483b;margin:0;max-width:520px;text-wrap:pretty">Svaka jedinica ima klimu, Wi‑Fi i kuhinju ili čajnu kuhinju. Parking je besplatan, u dvorištu.</p>
+    </div>
+    <div style="position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:4px">
+      <img data-reveal="scale" src="img/anastasija_04.jpg" alt="Terasa sa pogledom na more" style="width:100%;height:100%;object-fit:cover">
+    </div>
+  </section>
+
+  <section style="padding:0 clamp(20px,4vw,56px) clamp(72px,10vw,140px);max-width:1440px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:20px">
+      <sc-for list="{{ highlights }}" as="h" hint-placeholder-count="3">
+        <a href="{{ h.href }}" data-reveal="up" data-delay="{{ h.delay }}" style="display:block;color:#23261d" style-hover="color:#b8395f">
+          <div style="aspect-ratio:3/4;overflow:hidden;border-radius:4px;margin-bottom:20px">
+            <img src="{{ h.src }}" alt="{{ h.t }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.06)">
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">
+            <h3 style="font-family:'DM Serif Display',serif;font-weight:400;font-size:28px;margin:0">{{ h.t }}</h3>
+            <span style="font-size:12px;letter-spacing:.2em;color:#8a8b7e">{{ h.n }}</span>
+          </div>
+          <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:#5d5f52">{{ h.d }}</p>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="background:#23261d;color:#f6f2ea;padding:clamp(64px,9vw,120px) 0;overflow:hidden">
+    <div style="padding:0 clamp(20px,4vw,56px);display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:48px">
+      <h2 data-reveal="up" style="font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(36px,4.4vw,64px);margin:0;line-height:1">Šta kažu gosti</h2>
+      <a href="#recenzije" style="color:#f4b6c8;font-weight:700;font-size:14px;border-bottom:1.5px solid #f4b6c8;padding-bottom:4px" style-hover="color:#fff">Sve recenzije →</a>
+    </div>
+    <div style="overflow:hidden">
+      <div data-marquee="1" style="display:flex;gap:20px;width:max-content;padding-left:clamp(20px,4vw,56px)">
+        <sc-for list="{{ reviewsLoop }}" as="r" hint-placeholder-count="6">
+          <figure style="margin:0;width:min(380px,82vw);flex:none;border:1px solid rgba(246,242,234,.16);border-radius:4px;padding:clamp(22px,5vw,32px);display:flex;flex-direction:column;justify-content:space-between;gap:28px">
+            <div style="color:#f4b6c8;letter-spacing:4px;font-size:14px">★★★★★</div>
+            <blockquote style="margin:0;font-family:'DM Serif Display',serif;font-size:24px;line-height:1.3;text-wrap:pretty">„{{ r.t }}“</blockquote>
+            <figcaption style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;opacity:.7">{{ r.src }}</figcaption>
+          </figure>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="position:relative;min-height:80vh;display:flex;align-items:center;overflow:hidden;background:#141610">
+    <img data-reveal="scale" src="img/anastasija_28.jpg" alt="Stepenište noću" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.75">
+    <div style="position:relative;padding:80px clamp(20px,4vw,56px);color:#fff;max-width:760px">
+      <h2 data-reveal="up" style="font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(40px,5.6vw,84px);line-height:1;margin:0 0 28px">Uveče dvorište svetli ispod masline.</h2>
+      <div data-reveal="up" data-delay="150" style="display:flex;gap:14px;flex-wrap:wrap">
+        <a href="{{ bookingUrl }}" style="background:#b8395f;color:#fff;font-weight:700;font-size:15px;padding:16px 28px;border-radius:999px" style-hover="background:#fff;color:#b8395f">Proveri slobodne termine</a>
+        <a href="#galerija" style="color:#fff;font-weight:700;font-size:15px;padding:16px 28px;border-radius:999px;border:1.5px solid rgba(255,255,255,.7)" style-hover="background:rgba(255,255,255,.12);color:#fff">Galerija</a>
+      </div>
+    </div>
+  </section>
+</main>
+</sc-if>
+
+<sc-if value="{{ isSmestaj }}" hint-placeholder-val="{{ false }}">
+<main data-screen-label="Smeštaj">
+  <header style="position:relative;height:66vh;min-height:460px;overflow:hidden;background:#23261d">
+    <img data-kb="1" src="img/anastasija_33.jpg" alt="Dnevni boravak penthausa" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,22,16,.5),rgba(20,22,16,.15) 40%,rgba(20,22,16,.7))"></div>
+    <div style="position:absolute;left:clamp(20px,4vw,56px);right:clamp(20px,4vw,56px);bottom:56px;color:#fff">
+      <div data-reveal="up" style="font-size:12px;letter-spacing:.32em;text-transform:uppercase;margin-bottom:16px">Smeštaj</div>
+      <h1 data-reveal="up" data-delay="120" style="font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(48px,7vw,110px);line-height:.95;margin:0">Studiji i apartmani</h1>
+    </div>
+  </header>
+  <section style="padding:clamp(56px,8vw,110px) clamp(20px,4vw,56px);max-width:1440px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(72px,10vw,140px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;align-items:end">
+      <p data-reveal="up" style="font-family:'DM Serif Display',serif;font-size:clamp(26px,2.6vw,38px);line-height:1.25;margin:0;text-wrap:pretty">Od studija za dvoje do penthausa sa terasom za celu porodicu. U svim jedinicama: klima, Wi‑Fi, posteljina i peškiri.</p>
+      <div data-reveal="up" data-delay="120" style="display:flex;flex-wrap:wrap;gap:8px">
+        <sc-for list="{{ amenities }}" as="a" hint-placeholder-count="8">
+          <span style="font-size:13px;font-weight:600;padding:9px 14px;border:1px solid #d7d0c0;border-radius:999px;color:#45483b">{{ a }}</span>
+        </sc-for>
+      </div>
+    </div>
+    <sc-for list="{{ units }}" as="u" hint-placeholder-count="3">
+      <article style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:clamp(28px,5vw,72px);align-items:center">
+        <div data-reveal="up" style="order:{{ u.imgOrder }}">
+          <div style="aspect-ratio:4/3;overflow:hidden;border-radius:4px;background:#e2dccf">
+            <img src="{{ u.main }}" alt="{{ u.name }}" loading="lazy" style="width:100%;height:100%;object-fit:cover">
+          </div>
+          <div style="display:flex;gap:10px;margin-top:10px">
+            <sc-for list="{{ u.thumbs }}" as="t" hint-placeholder-count="4">
+              <button onClick="{{ t.pick }}" style="flex:1;max-width:120px;aspect-ratio:1;padding:0;border:2px solid {{ t.border }};border-radius:3px;overflow:hidden;cursor:pointer;background:none">
+                <img src="{{ t.src }}" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
+              </button>
+            </sc-for>
+          </div>
+        </div>
+        <div data-reveal="up" data-delay="120">
+          <div style="font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:#b8395f;font-weight:700;margin-bottom:18px">{{ u.no }} · {{ u.tag }}</div>
+          <h2 style="font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(34px,3.8vw,56px);line-height:1.02;margin:0 0 22px">{{ u.name }}</h2>
+          <p style="font-size:16px;line-height:1.75;color:#45483b;margin:0 0 28px;max-width:500px;text-wrap:pretty">{{ u.desc }}</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #d7d0c0;border-bottom:1px solid #d7d0c0;margin-bottom:24px;max-width:500px">
+            <div style="padding:16px 0;border-right:1px solid #d7d0c0"><div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#8a8b7e">Površina</div><div style="font-size:18px;font-weight:600;margin-top:6px">{{ u.size }}</div></div>
+            <div style="padding:16px 0 16px 20px"><div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#8a8b7e">Gosti</div><div style="font-size:18px;font-weight:600;margin-top:6px">{{ u.guests }}</div></div>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px">
+            <sc-for list="{{ u.feats }}" as="f" hint-placeholder-count="4">
+              <span style="font-size:13px;font-weight:600;padding:7px 12px;background:#ece6da;border-radius:999px;color:#45483b">{{ f }}</span>
+            </sc-for>
+          </div>
+          <a href="#kontakt" style="display:inline-block;background:#23261d;color:#f6f2ea;font-weight:700;font-size:14px;padding:14px 24px;border-radius:999px" style-hover="background:#b8395f;color:#fff">Pošalji upit za ovaj smeštaj</a>
+        </div>
+      </article>
+    </sc-for>
+  </section>
+</main>
+</sc-if>
+
+<sc-if value="{{ isGalerija }}" hint-placeholder-val="{{ false }}">
+<main data-screen-label="Galerija">
+  <header style="position:relative;height:56vh;min-height:420px;overflow:hidden;background:#23261d">
+    <img data-kb="1" src="img/anastasija_17.jpg" alt="Zalazak sunca sa terase" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%">
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,22,16,.5),rgba(20,22,16,.1) 40%,rgba(20,22,16,.65))"></div>
+    <div style="position:absolute;left:clamp(20px,4vw,56px);bottom:56px;color:#fff">
+      <div data-reveal="up" style="font-size:12px;letter-spacing:.32em;text-transform:uppercase;margin-bottom:16px">Galerija · {{ galleryCount }} fotografija</div>
+      <h1 data-reveal="up" data-delay="120" style="font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(48px,7vw,110px);line-height:.95;margin:0">Od jutra do noći</h1>
+    </div>
+  </header>
+  <section style="padding:40px clamp(20px,4vw,56px) 100px;max-width:1600px;margin:0 auto">
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;position:sticky;top:76px;z-index:5;padding:10px 0;background:#f6f2ea">
+      <sc-for list="{{ cats }}" as="c" hint-placeholder-count="6">
+        <button onClick="{{ c.select }}" style="font-size:14px;font-weight:600;padding:10px 18px;border-radius:999px;cursor:pointer;border:1px solid {{ c.border }};background:{{ c.bg }};color:{{ c.fg }};transition:all .25s">{{ c.label }}</button>
+      </sc-for>
+    </div>
+    <div style="columns:4 150px;column-gap:10px">
+      <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="12">
+        <button data-gal="{{ g.show }}" onClick="{{ g.open }}" style="display:{{ g.display }};width:100%;padding:0;border:0;background:#e2dccf;margin:0 0 12px;break-inside:avoid;cursor:zoom-in;overflow:hidden;border-radius:3px">
+          <img src="{{ g.src }}" alt="{{ g.cat }}" decoding="async" style="width:100%;display:block;transition:transform .9s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.04)">
+        </button>
+      </sc-for>
+    </div>
+  </section>
+</main>
+</sc-if>
+
+<sc-if value="{{ isLokacija }}" hint-placeholder-val="{{ false }}">
+<main data-screen-label="Lokacija">
+  <header style="position:relative;height:66vh;min-height:460px;overflow:hidden;background:#23261d">
+    <img data-kb="1" src="img/anastasija_08.jpg" alt="Pogled na zaliv" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,22,16,.5),rgba(20,22,16,.1) 40%,rgba(20,22,16,.65))"></div>
+    <div style="position:absolute;left:clamp(20px,4vw,56px);bottom:56px;color:#fff">
+      <div data-reveal="up" style="font-size:12px;letter-spacing:.32em;text-transform:uppercase;margin-bottom:16px">Lokacija</div>
+      <h1 data-reveal="up" data-delay="120" style="font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(48px,7vw,110px);line-height:.95;margin:0">Četiri minuta<br>do plaže</h1>
+    </div>
+  </header>
+  <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:clamp(32px,5vw,80px);padding:clamp(56px,8vw,110px) clamp(20px,4vw,56px);max-width:1440px;margin:0 auto;align-items:start">
+    <div>
+      <p data-reveal="up" style="font-family:'DM Serif Display',serif;font-size:clamp(26px,2.6vw,38px);line-height:1.25;margin:0 0 40px;text-wrap:pretty">Bečići su mirniji deo budvanske rivijere, sa jednom od najdužih peščanih plaža na obali. Stari grad Budva je na tri kilometra.</p>
+      <div style="border-top:1px solid #d7d0c0">
+        <sc-for list="{{ distances }}" as="d" hint-placeholder-count="6">
+          <div data-reveal="up" data-delay="{{ d.delay }}" style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:20px 0;border-bottom:1px solid #d7d0c0">
+            <span style="font-size:17px;font-weight:500">{{ d.p }}</span>
+            <span style="font-family:'DM Serif Display',serif;font-size:28px;color:#b8395f;white-space:nowrap">{{ d.k }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div data-reveal="up" style="margin-top:32px;font-size:15px;line-height:1.7;color:#45483b">Ul. Sremskog fronta 1, 85316 Bečići, Budva<br><a href="https://www.google.com/maps/place/Apartments+Anastasija/@42.2835925,18.8656441,17z" target="_blank" style="font-weight:700">Otvori u Google mapama →</a></div>
+    </div>
+    <div data-reveal="up" data-delay="150" style="position:sticky;top:100px;aspect-ratio:4/5;max-height:80vh;width:100%;border-radius:4px;overflow:hidden;background:#e2dccf">
+      <iframe title="Mapa" src="https://maps.google.com/maps?q=42.2835925,18.8656441&amp;z=15&amp;output=embed" style="width:100%;height:100%;border:0;filter:grayscale(.35) contrast(1.05)" loading="lazy"></iframe>
+    </div>
+  </section>
+  <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:12px;padding:0 clamp(20px,4vw,56px) 110px;max-width:1440px;margin:0 auto">
+    <div data-reveal="up" style="aspect-ratio:4/3;overflow:hidden;border-radius:4px"><img src="img/anastasija_21.jpg" alt="Plaža Bečići" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>
+    <div data-reveal="up" data-delay="100" style="aspect-ratio:4/3;overflow:hidden;border-radius:4px"><img src="img/anastasija_20.jpg" alt="Pogled na plažu i Sveti Stefan" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>
+    <div data-reveal="up" data-delay="200" style="aspect-ratio:4/3;overflow:hidden;border-radius:4px"><img src="img/anastasija_53.jpg" alt="Bečići i brdo" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>
+  </section>
+</main>
+</sc-if>
+
+<sc-if value="{{ isRecenzije }}" hint-placeholder-val="{{ false }}">
+<main data-screen-label="Recenzije">
+  <header style="position:relative;height:66vh;min-height:460px;overflow:hidden;background:#23261d">
+    <img data-kb="1" src="img/anastasija_48.jpg" alt="Gost na terasi" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%">
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,22,16,.5),rgba(20,22,16,.1) 40%,rgba(20,22,16,.65))"></div>
+    <div style="position:absolute;left:clamp(20px,4vw,56px);bottom:56px;color:#fff">
+      <div data-reveal="up" style="font-size:12px;letter-spacing:.32em;text-transform:uppercase;margin-bottom:16px">Recenzije gostiju</div>
+      <h1 data-reveal="up" data-delay="120" style="font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(48px,7vw,110px);line-height:.95;margin:0">Vraćaju se<br>svake godine</h1>
+    </div>
+  </header>
+  <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));border-bottom:1px solid #e2dccf">
+    <sc-for list="{{ ratings }}" as="r" hint-placeholder-count="3">
+      <div data-reveal="up" data-delay="{{ r.delay }}" style="padding:44px clamp(20px,4vw,56px);border-right:1px solid #e2dccf">
+        <div style="font-family:'DM Serif Display',serif;font-size:64px;line-height:1">{{ r.v }}<span style="font-size:24px;color:#8a8b7e">{{ r.of }}</span></div>
+        <div style="font-size:14px;font-weight:700;margin-top:12px">{{ r.p }}</div>
+        <div style="font-size:13px;color:#5d5f52;margin-top:4px">{{ r.n }}</div>
+      </div>
+    </sc-for>
+  </section>
+  <section style="padding:clamp(56px,8vw,110px) clamp(20px,4vw,56px);max-width:1440px;margin:0 auto;columns:3 280px;column-gap:20px">
+    <sc-for list="{{ reviews }}" as="r" hint-placeholder-count="6">
+      <figure data-reveal="up" style="break-inside:avoid;margin:0 0 20px;background:#fff;border-radius:4px;padding:clamp(24px,5vw,36px);display:flex;flex-direction:column;gap:22px">
+        <div style="color:#b8395f;letter-spacing:4px;font-size:14px">★★★★★</div>
+        <blockquote style="margin:0;font-family:'DM Serif Display',serif;font-size:25px;line-height:1.3;text-wrap:pretty">„{{ r.t }}“</blockquote>
+        <figcaption style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#8a8b7e">{{ r.src }}</figcaption>
+      </figure>
+    </sc-for>
+  </section>
+</main>
+</sc-if>
+
+<sc-if value="{{ isKontakt }}" hint-placeholder-val="{{ false }}">
+<main data-screen-label="Kontakt">
+  <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));min-height:100vh">
+    <div style="position:relative;overflow:hidden;min-height:60vh;background:#141610">
+      <img data-kb="1" src="img/anastasija_06.jpg" alt="Ulaz noću" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,22,16,.55),rgba(20,22,16,.1) 40%,rgba(20,22,16,.7))"></div>
+      <div style="position:absolute;left:clamp(20px,4vw,56px);right:clamp(20px,4vw,56px);bottom:56px;color:#fff">
+        <h1 data-reveal="up" style="font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(48px,6vw,96px);line-height:.95;margin:0 0 24px">Vidimo se<br>u Bečićima</h1>
+        <p data-reveal="up" data-delay="120" style="margin:0;font-size:15px;line-height:1.7;opacity:.9">Ul. Sremskog fronta 1, 85316 Bečići, Budva<br>Prevoz od/do aerodroma i rent‑a‑car na upit.</p>
+        <a data-reveal="up" data-delay="200" href="https://wa.me/381631101321" target="_blank" style="display:inline-flex;align-items:center;gap:10px;margin-top:24px;background:#25a35a;color:#fff;font-weight:700;font-size:15px;padding:14px 24px;border-radius:999px" style-hover="background:#fff;color:#1d7f46">WhatsApp · +381 63 1101321</a>
+      </div>
+    </div>
+    <div style="padding:clamp(120px,14vh,160px) clamp(20px,4vw,64px) 80px;display:flex;flex-direction:column;justify-content:center">
+      <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ submit }}" style="display:flex;flex-direction:column;gap:18px;max-width:560px;width:100%">
+          <div data-reveal="up" style="font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#b8395f;font-weight:700">Upit za rezervaciju</div>
+          <h2 data-reveal="up" data-delay="80" style="font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(34px,3.4vw,50px);line-height:1.05;margin:0 0 10px">Javite nam datume, mi ćemo odgovoriti istog dana.</h2>
+          <div data-reveal="up" data-delay="160" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px">
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#5d5f52">Ime<input required="" name="ime" style="font-size:16px;padding:14px 0;border:0;border-bottom:1.5px solid #c9c1af;background:transparent;outline:none;color:#23261d" style-focus="border-bottom-color:#b8395f"></label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#5d5f52">Email<input required="" type="email" name="email" style="font-size:16px;padding:14px 0;border:0;border-bottom:1.5px solid #c9c1af;background:transparent;outline:none;color:#23261d" style-focus="border-bottom-color:#b8395f"></label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#5d5f52">Dolazak<input type="date" name="od" style="font-size:16px;padding:14px 0;border:0;border-bottom:1.5px solid #c9c1af;background:transparent;outline:none;color:#23261d"></label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#5d5f52">Odlazak<input type="date" name="do" style="font-size:16px;padding:14px 0;border:0;border-bottom:1.5px solid #c9c1af;background:transparent;outline:none;color:#23261d"></label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#5d5f52">Broj gostiju<select name="gosti" style="font-size:16px;padding:14px 0;border:0;border-bottom:1.5px solid #c9c1af;background:transparent;outline:none;color:#23261d"><option>1</option><option selected="">2</option><option>3</option><option>4</option><option>5+</option></select></label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#5d5f52">Smeštaj<select name="smestaj" style="font-size:16px;padding:14px 0;border:0;border-bottom:1.5px solid #c9c1af;background:transparent;outline:none;color:#23261d"><option>Bilo koji</option><option>Penthaus sa terasom</option><option>Loft studio</option><option>Studio – pogled na more</option><option>Apartman – 2 spavaće sobe</option><option>Studio – pogled na planine</option></select></label>
+          </div>
+          <label data-reveal="up" data-delay="220" style="display:flex;flex-direction:column;gap:8px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#5d5f52">Poruka<textarea name="poruka" rows="3" style="font-size:16px;padding:14px 0;border:0;border-bottom:1.5px solid #c9c1af;background:transparent;outline:none;resize:vertical;color:#23261d"></textarea></label>
+          <div data-reveal="up" data-delay="280" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px">
+            <button type="submit" style="background:#b8395f;color:#fff;border:0;font-weight:700;font-size:15px;padding:16px 30px;border-radius:999px;cursor:pointer" style-hover="background:#23261d">Pošalji upit na WhatsApp</button>
+
+          </div>
+        </form>
+      </sc-if>
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div data-reveal="up" style="max-width:520px">
+          <div style="font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#b8395f;font-weight:700;margin-bottom:20px">Hvala</div>
+          <h2 style="font-family:'DM Serif Display',serif;font-weight:400;font-size:clamp(36px,4vw,60px);line-height:1.05;margin:0 0 20px">WhatsApp je otvoren. Pošaljite poruku i javljamo se uskoro.</h2>
+          <button onClick="{{ reset }}" style="background:none;border:0;padding:0;color:#b8395f;font-weight:700;font-size:15px;cursor:pointer;border-bottom:1.5px solid #b8395f">Pošalji novi upit</button>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+</main>
+</sc-if>
+
+<footer style="background:#1b1d16;color:#d9d4c6;padding:72px clamp(20px,4vw,56px) 40px">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px;max-width:1440px;margin:0 auto">
+    <div>
+      <div style="font-family:'DM Serif Display',serif;font-size:36px;color:#f6f2ea;line-height:1">Anastasija</div>
+      <div style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;margin-top:10px;opacity:.7">Apartmani · Bečići</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;font-size:14px">
+      <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.6;margin-bottom:6px">Stranice</div>
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="6">
+        <a href="{{ n.href }}" style="color:#d9d4c6" style-hover="color:#f4b6c8">{{ n.label }}</a>
+      </sc-for>
+    </div>
+    <div style="font-size:14px;line-height:1.8">
+      <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.6;margin-bottom:12px">Adresa</div>
+      Ul. Sremskog fronta 1<br>85316 Bečići, Budva<br>Crna Gora
+    </div>
+    <div style="font-size:14px;line-height:1.8">
+      <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.6;margin-bottom:12px">Govorimo</div>
+      Srpski, ruski, engleski
+    </div>
+    <div style="font-size:14px;line-height:1.8">
+      <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.6;margin-bottom:12px">WhatsApp</div>
+      <a href="https://wa.me/381631101321" target="_blank" style="color:#f4b6c8" style-hover="color:#fff">+381 63 1101321</a>
+    </div>
+  </div>
+  <div style="max-width:1440px;margin:56px auto 0;padding-top:24px;border-top:1px solid rgba(217,212,198,.15);font-size:12px;opacity:.6;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap">
+    <span>© 2026 Apartmani Anastasija</span><span>Besplatan parking · Wi‑Fi · Klima</span>
+  </div>
+</footer>
+
+<sc-if value="{{ lbOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeLb }}" style="position:fixed;inset:0;z-index:100;background:rgba(14,15,11,.94);display:flex;align-items:center;justify-content:center;padding:60px clamp(8px,6vw,70px)">
+    <img data-lb="1" src="{{ lbSrc }}" alt="" style="max-width:100%;max-height:100%;object-fit:contain;border-radius:2px">
+    <button onClick="{{ prevLb }}" aria-label="Prethodna" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:none;color:#fff;font-size:22px;cursor:pointer" style-hover="background:rgba(255,255,255,.12)">←</button>
+    <button onClick="{{ nextLb }}" aria-label="Sledeća" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:none;color:#fff;font-size:22px;cursor:pointer" style-hover="background:rgba(255,255,255,.12)">→</button>
+    <div style="position:absolute;top:20px;left:24px;color:#fff;font-size:13px;letter-spacing:.14em;opacity:.8">{{ lbLabel }}</div>
+    <button onClick="{{ closeLb }}" aria-label="Zatvori" style="position:absolute;top:14px;right:18px;background:none;border:0;color:#fff;font-size:30px;cursor:pointer;line-height:1">×</button>
+  </div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;bookingUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;#kontakt&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;heroPhoto&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;dvorište&quot;,&quot;noć&quot;,&quot;terasa&quot;],&quot;default&quot;:&quot;dvorište&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;animations&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+const IMG = n => `img/anastasija_${String(n).padStart(2, '0')}.jpg`;
+const PAGES = [['pocetna','Početna'],['smestaj','Smeštaj'],['galerija','Galerija'],['lokacija','Lokacija'],['recenzije','Recenzije'],['kontakt','Kontakt']];
+const GAL = [[43,'Dvorište'],[4,'Pogledi'],[7,'Pogledi'],[33,'Enterijer'],[5,'Dvorište'],[28,'Noć'],[8,'Pogledi'],[37,'Enterijer'],[49,'Dvorište'],[17,'Pogledi'],[6,'Noć'],[21,'Plaža'],[19,'Pogledi'],[35,'Dvorište'],[24,'Enterijer'],[18,'Noć'],[39,'Pogledi'],[32,'Dvorište'],[13,'Plaža'],[9,'Enterijer'],[23,'Dvorište'],[25,'Pogledi'],[31,'Noć'],[34,'Dvorište'],[20,'Plaža'],[15,'Pogledi'],[52,'Dvorište'],[10,'Dvorište'],[36,'Noć'],[26,'Pogledi'],[47,'Dvorište'],[27,'Enterijer'],[45,'Pogledi'],[42,'Dvorište'],[44,'Pogledi'],[12,'Dvorište'],[29,'Pogledi'],[14,'Pogledi'],[53,'Pogledi'],[11,'Dvorište'],[16,'Enterijer'],[51,'Noć'],[30,'Pogledi'],[48,'Pogledi'],[50,'Dvorište'],[38,'Enterijer'],[40,'Enterijer'],[41,'Enterijer'],[46,'Enterijer'],[22,'Enterijer']];
+const CATS = ['Sve','Pogledi','Dvorište','Enterijer','Noć','Plaža'];
+const UNITS = [
+  {name:'Penthaus sa terasom', tag:'Pogled na more', size:'38 m²', guests:'do 4 osobe', imgs:[33,4,19,7], desc:'Najviši sprat i najveća terasa u kući: suncobran, sto za šestoro i pogled preko krovova na zaliv Bečića. Dnevni boravak sa ugaonom garniturom, moderna kuhinja i klizna vrata ka terasi.', feats:['Velika terasa','Pogled na more','Kuhinja','Klima','Wi‑Fi']},
+  {name:'Loft studio', tag:'Novo renovirano', size:'Na upit', guests:'Na upit', imgs:[37], desc:'Svetao studio sa galerijom za spavanje, čeličnim stepeništem i drvenim podom. Potpuno opremljena kuhinja sa rernom i šankom za doručak.', feats:['Galerija','Kuhinja sa rernom','Klima','Wi‑Fi']},
+  {name:'Studio sa pogledom na more', tag:'Balkon', size:'26 m²', guests:'do 3 osobe', imgs:[45,27,40,15], desc:'Okrugli balkon sa suncobranom gleda na more i hotel Splendid. Bračni krevet, čajna kuhinja sa mikrotalasnom i ringlama, sopstveno kupatilo.', feats:['Balkon','Pogled na more','Čajna kuhinja','Klima','Wi‑Fi']},
+  {name:'Apartman sa dve spavaće sobe', tag:'Za porodice', size:'36 m²', guests:'do 4 osobe', imgs:[24,9,16,41], desc:'Odvojene spavaće sobe sa bračnim krevetima i dnevni boravak sa kaučem na razvlačenje. Dobar izbor za porodicu ili dva para.', feats:['2 spavaće sobe','Balkon','Kuhinja','Klima','Wi‑Fi']},
+  {name:'Studio sa pogledom na planine', tag:'Mirna strana', size:'25 m²', guests:'do 3 osobe', imgs:[14,46,38,22], desc:'Na tišoj strani kuće, sa pogledom na zelenilo i planine iznad Budve. Bračni krevet, čajna kuhinja i balkon.', feats:['Balkon','Pogled na planine','Čajna kuhinja','Klima','Wi‑Fi']}
+];
+const REVIEWS = [
+  {t:'Ogromna terasa sa suncobranom i pogled zbog kog ne poželite da izađete iz apartmana.', src:'Google recenzija'},
+  {t:'Anastasija je divna domaćica. Brza komunikacija i osmeh svaki put.', src:'Google recenzija'},
+  {t:'Dvorište sa vodopadom, hladovinom drveća i vinovom lozom. Sve je odlično održavano.', src:'Google recenzija'},
+  {t:'Čisto, moderno i lepo uređeno. Ima sve što je potrebno, kao kod kuće.', src:'Google recenzija'},
+  {t:'Privatni parking ispred kuće, prodavnice na pet minuta, plaža praktično preko puta.', src:'Google recenzija'},
+  {t:'Terasa je velika, jutarnju kafu pijete u miru. Svaki detalj je na svom mestu.', src:'Google recenzija'}
+];
+
+class Component extends DCLogic {
+  state = { page: 'pocetna', cat: 'Sve', lb: -1, unitImg: {}, sent: false, mobile: window.innerWidth < 860, menu: false };
+  rootRef = React.createRef();
+  navRef = React.createRef();
+
+  componentDidMount() {
+    document.documentElement.lang = 'sr';
+    this.onHash = () => {
+      const p = (location.hash || '').slice(1);
+      const pg = PAGES.find(x => x[0] === (p || 'pocetna'));
+      if (pg) document.title = pg[0] === 'pocetna' ? 'Apartmani Anastasija Bečići | Smeštaj 300 m od plaže, Budva' : `${pg[1]} · Apartmani Anastasija Bečići`;
+      if (PAGES.some(x => x[0] === p) && p !== this.state.page) { this.setState({ page: p, lb: -1, menu: false }); window.scrollTo(0, 0); }
+    };
+    this.onScroll = () => {
+      const n = this.navRef.current; if (!n) return;
+      const s = window.scrollY > 40;
+      n.style.background = s ? 'rgba(27,29,22,.92)' : 'transparent';
+      n.style.backdropFilter = s ? 'blur(12px)' : 'none';
+      n.style.paddingTop = n.style.paddingBottom = s ? '14px' : '22px';
+    };
+    this.onKey = e => {
+      if (this.state.lb < 0) return;
+      if (e.key === 'Escape') this.setState({ lb: -1 });
+      if (e.key === 'ArrowRight') this.step(1);
+      if (e.key === 'ArrowLeft') this.step(-1);
+    };
+    this.onResize = () => { const m = window.innerWidth < 860; if (m !== this.state.mobile) this.setState({ mobile: m, menu: false }); };
+    window.addEventListener('resize', this.onResize);
+    window.addEventListener('hashchange', this.onHash);
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    window.addEventListener('keydown', this.onKey);
+    this.onHash(); this.onScroll(); this.animate();
+    if (this.state.page === 'galerija') this.animateGallery(false);
+  }
+  componentDidUpdate(pp, ps) {
+    if (ps.page !== this.state.page || ps.sent !== this.state.sent) { this.animate(); this.onScroll(); }
+    if (this.state.menu && !ps.menu) {
+      document.body.style.overflow = 'hidden';
+      const r = this.rootRef.current;
+      const m = r && r.querySelector('[data-menu]');
+      if (m) m.animate([{ clipPath: 'circle(0% at calc(100% - 44px) 44px)' }, { clipPath: 'circle(150% at calc(100% - 44px) 44px)' }], { duration: 650, easing: 'cubic-bezier(.7,0,.2,1)' });
+      r && r.querySelectorAll('[data-mi]').forEach((e, i) => e.animate([{ opacity: 0, transform: 'translateY(28px)' }, { opacity: 1, transform: 'none' }], { duration: 600, delay: 200 + i * 55, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'backwards' }));
+    }
+    if (!this.state.menu && ps.menu) document.body.style.overflow = '';
+    if (this.state.page === 'galerija' && (ps.page !== 'galerija' || ps.cat !== this.state.cat)) this.animateGallery(ps.page === 'galerija');
+    if (this.state.lb >= 0 && ps.lb !== this.state.lb && this.props.animations !== false) {
+      const im = this.rootRef.current && this.rootRef.current.querySelector('[data-lb]');
+      if (im) im.animate([{ opacity: 0, transform: 'scale(.97)' }, { opacity: 1, transform: 'none' }], { duration: 400, easing: 'cubic-bezier(.2,.7,.2,1)' });
+    }
+  }
+  componentWillUnmount() {
+    window.removeEventListener('hashchange', this.onHash);
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('keydown', this.onKey);
+    if (this.io) this.io.disconnect();
+  }
+  animate() {
+    const root = this.rootRef.current; if (!root) return;
+    const on = this.props.animations !== false;
+    if (this.io) this.io.disconnect();
+    const els = root.querySelectorAll('[data-reveal]:not([data-done])');
+    if (!on) { els.forEach(e => { e.style.opacity = 1; }); return; }
+    els.forEach(e => { e.style.opacity = 0; });
+    this.io = new IntersectionObserver(ents => ents.forEach(en => {
+      if (!en.isIntersecting) return;
+      const e = en.target; this.io.unobserve(e); e.dataset.done = '1';
+      const k = e.dataset.reveal;
+      const from = k === 'scale' ? 'scale(1.08)' : 'translateY(40px)';
+      e.animate([{ opacity: 0, transform: from }, { opacity: 1, transform: 'none' }], { duration: k === 'scale' ? 1600 : 950, delay: +(e.dataset.delay || 0), easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'both' });
+      e.style.opacity = 1;
+    }), { threshold: 0.08, rootMargin: '0px 0px -4% 0px' });
+    els.forEach(e => this.io.observe(e));
+    root.querySelectorAll('[data-kb]:not([data-done])').forEach(e => { e.dataset.done = '1'; e.animate([{ transform: 'scale(1.15)' }, { transform: 'scale(1)' }], { duration: 10000, easing: 'cubic-bezier(.2,.6,.3,1)', fill: 'both' }); });
+    root.querySelectorAll('[data-marquee]').forEach(e => {
+      if (e._m) return;
+      e._m = e.animate([{ transform: 'translateX(0)' }, { transform: 'translateX(-50%)' }], { duration: 70000, iterations: Infinity });
+      e.addEventListener('mouseenter', () => e._m.pause());
+      e.addEventListener('mouseleave', () => e._m.play());
+    });
+  }
+  animateGallery(isFilter) {
+    const root = this.rootRef.current; if (!root) return;
+    if (!this.preloaded) { this.preloaded = true; GAL.forEach(g => { const i = new Image(); i.src = IMG(g[0]); }); }
+    if (this.gio) this.gio.disconnect();
+    const items = [...root.querySelectorAll('[data-gal="1"]')];
+    root.querySelectorAll('[data-gal]').forEach(e => e.getAnimations({ subtree: true }).forEach(a => a.cancel()));
+    if (this.props.animations === false) return;
+    const ease = 'cubic-bezier(.16,1,.3,1)';
+    let batch = 0, t = 0;
+    const play = e => {
+      const now = performance.now(); if (now - t > 120) batch = 0; t = now;
+      const d = Math.min(batch++, 10) * (isFilter ? 45 : 80);
+      e.animate([{ clipPath: 'inset(100% 0 0 0 round 3px)', opacity: .4 }, { clipPath: 'inset(0 0 0 0 round 3px)', opacity: 1 }], { duration: isFilter ? 700 : 1100, delay: d, easing: ease, fill: 'backwards' });
+      const im = e.firstElementChild;
+      if (im) im.animate([{ transform: 'scale(1.3)', filter: 'blur(6px)' }, { transform: 'scale(1)', filter: 'blur(0)' }], { duration: isFilter ? 900 : 1500, delay: d, easing: ease, fill: 'backwards' });
+    };
+    items.forEach(e => { e.style.clipPath = 'inset(100% 0 0 0)'; });
+    this.gio = new IntersectionObserver(ents => ents.forEach(en => {
+      if (!en.isIntersecting) return;
+      this.gio.unobserve(en.target); en.target.style.clipPath = ''; play(en.target);
+    }), { threshold: 0.05 });
+    requestAnimationFrame(() => items.forEach(e => this.gio.observe(e)));
+  }
+  filtered() { const c = this.state.cat; return GAL.filter(g => c === 'Sve' || g[1] === c); }
+  step(d) { const n = this.filtered().length; this.setState(s => ({ lb: (s.lb + d + n) % n })); }
+
+  renderVals() {
+    const { page, cat, lb, unitImg, sent } = this.state;
+    const list = this.filtered();
+    const stop = e => e.stopPropagation();
+    const hero = this.props.heroPhoto === 'noć' ? 6 : this.props.heroPhoto === 'terasa' ? 7 : 43;
+    return {
+      rootRef: this.rootRef, navRef: this.navRef,
+      bookingUrl: this.props.bookingUrl || '#kontakt',
+      heroSrc: IMG(hero),
+      nav: PAGES.map(([id, label]) => ({ href: '#' + id, label, op: id === page ? 1 : 0.72, line: id === page ? '#fff' : 'transparent', mcolor: id === page ? '#f4b6c8' : '#f6f2ea' })),
+      isMobile: this.state.mobile, isDesktop: !this.state.mobile, menuOpen: this.state.mobile && this.state.menu,
+      menuIcon: this.state.menu ? '✕' : 'MENI',
+      toggleMenu: () => this.setState(s => ({ menu: !s.menu })), closeMenu: () => this.setState({ menu: false }),
+      isHome: page === 'pocetna', isSmestaj: page === 'smestaj', isGalerija: page === 'galerija',
+      isLokacija: page === 'lokacija', isRecenzije: page === 'recenzije', isKontakt: page === 'kontakt',
+      stats: [{ v: '4.8', l: 'Google ocena, 94 recenzije' }, { v: '300 m', l: 'do plaže Bečići' }, { v: '12', l: 'apartmana i studija' }, { v: '18 km', l: 'do aerodroma Tivat' }].map((s, i) => ({ ...s, delay: i * 90 })),
+      highlights: [
+        { src: IMG(7), t: 'Terase', n: '01', d: 'Zalasci sunca nad zalivom, sa sopstvene terase ili balkona.', href: '#smestaj' },
+        { src: IMG(35), t: 'Dvorište', n: '02', d: 'Stara maslina, leandri, fontana i sto pod lozom.', href: '#galerija' },
+        { src: IMG(13), t: 'Plaža', n: '03', d: 'Peščana plaža Bečići na četiri minuta hoda.', href: '#lokacija' }
+      ].map((h, i) => ({ ...h, delay: i * 120 })),
+      reviews: REVIEWS, reviewsLoop: REVIEWS.concat(REVIEWS),
+      amenities: ['Klima uređaj', 'Besplatan Wi‑Fi', 'Besplatan parking', 'Kuhinja', 'Posteljina i peškiri', 'Dvorište sa baštom', 'Transfer na upit', 'Rent‑a‑car na upit'],
+      units: UNITS.map((u, i) => {
+        const a = unitImg[i] || 0;
+        return { ...u, no: String(i + 1).padStart(2, '0'), imgOrder: i % 2, main: IMG(u.imgs[a]),
+          thumbs: u.imgs.length > 1 ? u.imgs.map((n, j) => ({ src: IMG(n), border: j === a ? '#b8395f' : 'transparent', pick: () => this.setState(s => ({ unitImg: { ...s.unitImg, [i]: j } })) })) : [] };
+      }),
+      galleryCount: GAL.length,
+      cats: CATS.map(c => ({ label: c, select: () => this.setState({ cat: c }), bg: c === cat ? '#23261d' : 'transparent', fg: c === cat ? '#f6f2ea' : '#23261d', border: c === cat ? '#23261d' : '#c9c1af' })),
+      gallery: GAL.map(g => { const show = cat === 'Sve' || g[1] === cat; return { src: IMG(g[0]), cat: g[1], show: show ? '1' : '0', display: show ? 'block' : 'none', open: () => this.setState({ lb: list.indexOf(g) }) }; }),
+      lbOpen: lb >= 0, lbSrc: lb >= 0 && list[lb] ? IMG(list[lb][0]) : '',
+      lbLabel: lb >= 0 ? `${lb + 1} / ${list.length}` : '',
+      closeLb: () => this.setState({ lb: -1 }),
+      prevLb: e => { stop(e); this.step(-1); }, nextLb: e => { stop(e); this.step(1); },
+      distances: [['Plaža Bečići', '300 m'], ['Prodavnice i restorani', '5 min'], ['Stari grad Budva', '3 km'], ['Sveti Stefan', '9 km'], ['Aerodrom Tivat', '18 km'], ['Aerodrom Podgorica', '65 km']].map(([p, k], i) => ({ p, k, delay: i * 60 })),
+      ratings: [{ v: '4.8', of: '/5', p: 'Google', n: '94 recenzije' }, { v: '5', of: '/5', p: 'Tripadvisor', n: 'Ocena gostiju' }, { v: '9.1', of: '/10', p: 'Booking ocene', n: 'Wonderful' }].map((r, i) => ({ ...r, delay: i * 100 })),
+      notSent: !sent, sent,
+      submit: e => {
+        e.preventDefault();
+        const f = new FormData(e.target), g = k => (f.get(k) || '').toString().trim();
+        const msg = [`Zdravo, upit za Apartmane Anastasija:`, `Ime: ${g('ime')}`, g('email') && `Email: ${g('email')}`,
+          `Dolazak: ${g('od') || '-'}`, `Odlazak: ${g('do') || '-'}`, `Gosti: ${g('gosti')}`, `Smeštaj: ${g('smestaj')}`,
+          g('poruka') && `Poruka: ${g('poruka')}`].filter(Boolean).join('\n');
+        window.open('https://wa.me/381631101321?text=' + encodeURIComponent(msg), '_blank');
+        this.setState({ sent: true });
+      },
+      reset: () => this.setState({ sent: false })
+    };
+  }
+}
+</script>
+</body>
+</html>
